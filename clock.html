@@ -1,30 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="et">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="clock.js" defer></script>
+    <title>Neoon lauakell</title>
     <link rel="stylesheet" href="clock.css">
-    <title>Kell</title>
-</head>
+    <script src="clock.js" defer></script>
 
+</head>
 <body>
-    <!-- HTML struktureerimiseks: Ctrl+A Ctrl+K Ctrl+F -->
-    <div id="container">
-        <div id="clockContainer">
-            <div id="hours">00:</div>
-            <div id="minutes">00:</div>
-            <div id="seconds">00</div>
-        </div>
-        <div id="dateContainer">
-            <div id="day">01.</div>
-            <div id="month">01.</div>
-            <div id="year">2000</div>
-        </div>
-        <div id="buttonContainer">
-            <button id="bigger">+</button>
-            <button id="smaller">-</button>
-        </div>
-    </div>
+    <main id="app">
+        <section id="clockCard">
+            <p id="themeLabel">NEOON DIGITAALKELL</p>
+
+            <div id="clockContainer" class="glow">
+                <span id="hours">00</span>
+                <span class="separator">:</span>
+                <span id="minutes">00</span>
+                <span class="separator" id="secondsSeparator">:</span>
+                <span id="seconds">00</span>
+            </div>
+
+            <div id="dateContainer">
+                <span id="weekday">Esmaspäev</span>
+                <span class="dot">•</span>
+                <span id="day">01</span>
+                <span>.</span>
+                <span id="month">01</span>
+                <span>.</span>
+                <span id="year">2026</span>
+            </div>
+        </section>
+
+        <section id="controlsPanel">
+            <h2>Seaded</h2>
+
+            <div class="controlsGrid">
+                <label class="controlItem">
+                    <span>Teksti värv</span>
+                    <input type="color" id="textColorPicker" value="#7df9ff">
+                </label>
+
+                <label class="controlItem">
+                    <span>Taustavärv</span>
+                    <input type="color" id="backgroundColorPicker" value="#050816">
+                </label>
+
+                <label class="controlItem">
+                    <span>Font</span>
+                    <select id="fontSelector">
+                        <option value="'Orbitron', sans-serif">Orbitron</option>
+                        <option value="Arial, sans-serif">Arial</option>
+                        <option value="'Courier New', monospace">Courier New</option>
+                        <option value="'Trebuchet MS', sans-serif">Trebuchet MS</option>
+                        <option value="Georgia, serif">Georgia</option>
+                    </select>
+                </label>
+
+                <label class="controlItem">
+                    <span>Kella asukoht</span>
+                    <select id="positionSelector">
+                        <option value="center">Keskel</option>
+                        <option value="top">Üleval</option>
+                        <option value="bottom">All</option>
+                        <option value="left">Vasakul</option>
+                        <option value="right">Paremal</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="buttonRow">
+                <button id="biggerButton" type="button">Suurem</button>
+                <button id="smallerButton" type="button">Väiksem</button>
+                <button id="toggleFormatButton" type="button">24h / 12h</button>
+                <button id="toggleSecondsButton" type="button">Sekundid</button>
+                <button id="toggleGlowButton" type="button">Glow</button>
+                <button id="randomThemeButton" type="button">Suvalised värvid</button>
+            </div>
+
+            <p id="helpText">
+                Klaviatuur: <strong>+</strong> suurendab, <strong>-</strong>
+                vähendab, <strong>T</strong> vahetab ajavormingut,
+                <strong>S</strong> peidab/näitab sekundeid.
+            </p>
+        </section>
+
+        <footer id="footer">
+            <p>Autor: <strong>Olaf Anton Kirsberg</strong></p>
+            <p>
+                Repositoorium:
+                <a
+                    href="https://github.com/olafkirs/kodutoo-1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    GitHub link
+                </a>
+            </p>
+        </footer>
+    </main>
 </body>
 </html>

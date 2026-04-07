@@ -1,29 +1,250 @@
-body{
-    margin:0;
-    padding:0;
-    background-color: black;
-    font-size: 30px;
-    color:white;
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap");
+
+:root {
+    --text-color: #7df9ff;
+    --bg-color: #050816;
+    --panel-color: rgba(255, 255, 255, 0.08);
+    --shadow-color: rgba(125, 249, 255, 0.55);
+    --clock-font-size: 12vw;
+    --date-font-size: 2.4vw;
+    --font-family: "Orbitron", sans-serif;
 }
 
-#container{
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top, rgba(30, 60, 120, 0.35), transparent 35%),
+        radial-gradient(circle at bottom, rgba(0, 255, 200, 0.15), transparent 30%),
+        var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#app {
+    width: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    height: 90vh;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vh 2vw;
+    gap: 2vh;
+}
+
+#clockCard {
+    width: 100%;
+    min-height: 58vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s ease;
+}
+
+#themeLabel {
+    margin: 0 0 1rem 0;
+    letter-spacing: 0.4rem;
+    font-size: clamp(0.8rem, 1.3vw, 1.2rem);
+    opacity: 0.75;
+}
+
+#clockContainer {
+    display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.2em;
+    font-size: var(--clock-font-size);
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    word-break: keep-all;
 }
 
-#clockContainer, #dateContainer{
+#dateContainer {
+    margin-top: 1.2rem;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    font-size: 25px;
+    gap: 0.35rem;
+    font-size: clamp(1rem, var(--date-font-size), 2.2rem);
+    opacity: 0.92;
+    text-align: center;
 }
 
-button{
-    font-size: 1.1em;
-    border-radius: 20px;
-    padding: 0px;
-    height: 40px;
-    width: 40px;
+.separator,
+.dot {
+    opacity: 0.8;
+}
+
+.glow {
+    text-shadow:
+        0 0 8px var(--shadow-color),
+        0 0 16px var(--shadow-color),
+        0 0 24px var(--shadow-color);
+}
+
+#controlsPanel {
+    width: min(1100px, 96%);
+    background: var(--panel-color);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    padding: 1.25rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+#controlsPanel h2 {
+    margin-top: 0;
+    text-align: center;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+}
+
+.controlsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.controlItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    font-size: 0.95rem;
+}
+
+.controlItem span {
+    font-weight: 600;
+}
+
+.controlItem input,
+.controlItem select,
+.buttonRow button {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.controlItem select {
+    background: white;
+    color: black;
+    border: 1px solid #ccc;
+}
+
+.controlItem select option {
+    background: white;
+    color: black;
+}
+
+.controlItem select,
+.buttonRow button {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.controlItem input[type="color"] {
+    width: 100%;
+    min-height: 48px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.buttonRow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.buttonRow button {
+    cursor: pointer;
+    min-width: 110px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.buttonRow button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+#helpText {
+    margin: 1rem 0 0 0;
+    text-align: center;
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
+
+#footer {
+    text-align: center;
+    font-size: 0.95rem;
+    opacity: 0.95;
+}
+
+#footer a {
+    color: var(--text-color);
+}
+
+.position-top {
+    justify-content: flex-start !important;
+    padding-top: 6vh;
+}
+
+.position-bottom {
+    justify-content: flex-end !important;
+    padding-bottom: 6vh;
+}
+
+.position-left {
+    align-items: flex-start !important;
+    padding-left: 5vw;
+}
+
+.position-right {
+    align-items: flex-end !important;
+    padding-right: 5vw;
+}
+
+.position-center {
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0;
+}
+
+@media (max-width: 900px) {
+    :root {
+        --clock-font-size: 18vw;
+        --date-font-size: 4.8vw;
+    }
+
+    #clockContainer {
+        flex-wrap: wrap;
+    }
+
+    #controlsPanel {
+        width: 98%;
+    }
+}
+
+@media (max-width: 520px) {
+    #themeLabel {
+        letter-spacing: 0.18rem;
+    }
+
+    .buttonRow button {
+        width: 100%;
+    }
+
+    #dateContainer {
+        gap: 0.2rem;
+    }
 }
