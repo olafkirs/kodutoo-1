@@ -45,10 +45,5 @@ JavaScriptis on kasutatud klassi `DigitalClockApp`, mis haldab:
 - kasutaja tegevuste kuulamist
 - kujunduse muutmist
 
-
-[GitHubi link](https://github.com/SINU-KASUTAJA/1kodutoo)
-
-## Promptide viited
-
 Koodis on kommentaarid, mis viitavad promptidele, mille abil lahendust loodi
 ja parandati.
